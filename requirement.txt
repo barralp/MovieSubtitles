@@ -1,0 +1,6 @@
+pysrt
+pynput
+pyobjc
+pyobjc-framework-AppKit
+pyobjc-framework-Quartz
+pyobjc-core
