@@ -44,14 +44,10 @@ This Python application provides a transparent subtitle overlay synchronized wit
 ## Application Description
 This script launches a transparent subtitle overlay application for displaying `.srt` subtitles synchronized with a movie or video. The application supports several interactive commands for controlling subtitle playback.
 
----
-
 ## Commands
 - **Alt + Left Click**: Toggles between pausing and resuming subtitle playback.
 - **Alt + Right Arrow**: Skips to the next subtitle.
 - **Alt + Left Arrow**: Skips to the previous subtitle.
-
----
 
 ## Parameters Description
 - **`srt_file`**: The path to the subtitle file in `.srt` format. This is a required parameter and should point to a valid file.
@@ -59,8 +55,6 @@ This script launches a transparent subtitle overlay application for displaying `
 - **`first_time`**: (Optional, default: time of the first subtitle) The new start time for the first subtitle after rescaling. If specified, rescaling will adjust the timeline to this value.
 - **`last_time`**: (Optional, default: time of the last subtitle) The new end time for the last subtitle after rescaling. If specified, the timeline will be scaled to fit within this duration.
 - **`scaling_factor`**: (Optional) A multiplier to adjust the overall timing of subtitles. Default is `1.0` (no scaling). This parameter is bypassed if `last_time` is non-zero.
-
----
 
 ## Operation
 Prepare your movie at `start_time` (by default `0`) and then press **Alt + Left Click** on the play button to start the movie and subtitles synchronously. 
