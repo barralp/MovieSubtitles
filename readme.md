@@ -17,4 +17,4 @@ This Python application provides a transparent subtitle overlay synchronized wit
 1. Clone the repository:
    ```bash
    git clone https://github.com/barralp/MovieSubtitles.git
-   cd your-repo-name
+   cd your-repo-name# MovieSubtitles
