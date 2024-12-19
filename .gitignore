@@ -1,0 +1,14 @@
+# Ignore all .srt files
+*.srt
+
+# But keep test_subtitles.srt
+!test_subtitles.srt
+
+.DS_Store
+__pycache__
+*.pyc
+*.egg-info
+
+# Ignore the entire subtitles/ folder
+subtitles/
+run_perso.py

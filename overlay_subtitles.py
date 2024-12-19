@@ -22,11 +22,23 @@ import time
 import threading
 from pynput import mouse, keyboard
 from Quartz import CGEventGetLocation
+import chardet
+
+def detect_encoding(file_path):
+    with open(file_path, 'rb') as f:
+        raw_data = f.read()
+    result = chardet.detect(raw_data)
+    encoding = result['encoding']
+    confidence = result['confidence']
+    print(f"Detected encoding: {encoding} (confidence: {confidence})")
+    return encoding
 
 class TransparentOverlayApp:
-    def __init__(self, srt_file, start_time=0, first_time=None, last_time=None, scaling_factor=1.0):
+    def __init__(self, srt_file, start_time=0, first_time=None, last_time=None, scaling_factor=1.0, encoding=None):
         # Parse and rescale subtitles
-        subtitles = pysrt.open(srt_file, encoding='latin-1')
+        if encoding is None:
+            encoding = detect_encoding(srt_file)
+        subtitles = pysrt.open(srt_file, encoding=encoding)
         self.subtitles = rescale_subtitles(subtitles, first_time, last_time, scaling_factor)
         self.time_position_in_subtitles = start_time  # Skip subtitles before this time
         self.is_paused = True  # Start in the "paused" state
@@ -70,9 +82,9 @@ class TransparentOverlayApp:
         font_size = 52
         subtitle_height = 140
         subtitle_frame = NSMakeRect(
-            screen_frame.size.width / 4,  # X position (centered horizontally)
+            screen_frame.size.width / 20,  # X position (centered horizontally)
             screen_frame.size.height / 10,  # Y position (10% above the bottom of the screen)
-            screen_frame.size.width / 2,  # Width
+            screen_frame.size.width * 18 / 20,  # Width
             subtitle_height,  # Height
         )
         self.subtitle_field = NSTextField.alloc().initWithFrame_(subtitle_frame)
